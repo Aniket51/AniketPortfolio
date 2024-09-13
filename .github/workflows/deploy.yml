@@ -1,0 +1,25 @@
+name: Deploy Website to S3
+
+on:
+  push:
+    branches:
+      - main  # This triggers on push to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AKIAQKPIMBOPV6FNXDW5 }}
+        aws-secret-access-key: ${{ secrets.AqnFvTsM6VMbcac1QGeSC++bKbQL3x1UaYFCV6u0 }}
+        aws-region: <eu-central-1> # e.g., us-east-1
+
+    - name: Sync S3 bucket
+      run: aws s3 sync . s3://aniketdereportfolio --delete --exclude ".git/*" --exclude ".github/*"
+  
