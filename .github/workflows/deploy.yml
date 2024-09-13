@@ -3,7 +3,7 @@ name: Deploy Website to S3
 on:
   push:
     branches:
-      - main  # This triggers on push to the main branch
+      - main  # Triggers on push to the main branch
 
 jobs:
   deploy:
@@ -16,10 +16,9 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ secrets.AKIAQKPIMBOPV6FNXDW5 }}
-        aws-secret-access-key: ${{ secrets.AqnFvTsM6VMbcac1QGeSC++bKbQL3x1UaYFCV6u0 }}
-        aws-region: <eu-central-1> # e.g., us-east-1
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-central-1  # Your AWS region
 
     - name: Sync S3 bucket
-      run: aws s3 sync . s3://aniketdereportfolio --delete --exclude ".git/*" --exclude ".github/*"
-  
+      run: aws s3 sync . s3://<aniketdereportfolio> --delete --exclude ".git/*" --exclude ".github/*"
