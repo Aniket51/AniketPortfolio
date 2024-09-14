@@ -19,6 +19,6 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-central-1  # Your AWS region
-
+        
     - name: Sync S3 bucket
-      run: aws s3 sync . s3://aniketdereportfolio --delete --exclude ".git/*" --exclude ".github/*"
+      run: aws s3 sync . s3://aniketdereportfolio --delete --exclude ".git/*" --exclude ".github/*" --acl public-read
