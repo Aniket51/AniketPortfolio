@@ -21,4 +21,4 @@ jobs:
         aws-region: eu-central-1  # Your AWS region
 
     - name: Sync S3 bucket
-      run: aws s3 sync . s3://<aniketdereportfolio> --delete --exclude ".git/*" --exclude ".github/*"
+      run: aws s3 sync . s3://aniketdereportfolio --delete --exclude ".git/*" --exclude ".github/*"
